@@ -1,4 +1,5 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
+from db.categories import Category
 
 app = Flask(__name__)
 
@@ -17,11 +18,22 @@ def contact():
 
 @app.route('/categories/')
 def categories():
-    return render_template('categories.html')
+    categories = Category.get_all()
+    return render_template('categories.html',
+                           categories=categories)
 
 @app.errorhandler(404)
 def not_found_error(error):
     return render_template('404.html')
+
+@app.route('/categories/create/', methods=('GET', 'POST'))
+def create_cat():
+    if request.method == 'POST':
+        category = request.form['category']
+        description = request.form['description']
+        print(category)
+        print(description)
+    return render_template('create_cat.html')
 
 if __name__ == '__main__':
     app.run(debug=True)
