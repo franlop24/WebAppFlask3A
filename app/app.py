@@ -1,6 +1,12 @@
 from flask import (Flask, render_template, request,
                    redirect, flash, url_for)
+
+# Importar Clases de DataBase
 from db.categories import Category
+from db.users import User
+
+# Importar Formularios
+from forms.users_forms import CreateUserForm
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'My Secret Key'
@@ -56,6 +62,12 @@ def delete_cat(id):
     cat.delete()
     #Enviar datos a form
     return redirect(url_for('categories'))
+
+@app.route('/users/create/')
+def create_user():
+    form = CreateUserForm()
+    return render_template('create_user.html',
+                           form=form)
 
 if __name__ == '__main__':
     app.run(debug=True)
