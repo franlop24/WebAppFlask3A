@@ -9,7 +9,7 @@ Agregar Categoria
    {{ form.csrf_token }}
    <div>
         {{ form.category.label }}
-        {{ form.category() }}
+        {{ form.category(placeholder="Categoría") }}
         {% if form.category.errors %}
           {% for error in form.category.errors %}
           <p>{{ error }}</p>
@@ -26,8 +26,9 @@ Agregar Categoria
         {% endif %}
    </div>
    <div>
-        {{ form.submit(class="btn") }}
+        {{ form.submit(class="btn btn-success") }}
    </div>
 </form>
+<a href="{{ url_for('category.categories') }}" class="btn btn-warning">Regresar</a>
 {% endblock content %}
         

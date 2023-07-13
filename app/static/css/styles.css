@@ -49,11 +49,18 @@ nav li a:hover {
     width: 200px;
     padding: 10px;
     border: none;
-    background-color: rgb(62, 234, 117);
     border-radius: 5px;
     text-decoration: none;
     font-weight: 700;
     text-align: center;
+}
+
+.btn-success {
+    background-color: rgb(62, 234, 117);
+}
+
+.btn-warning {
+    background-color: rgb(234, 194, 62);
 }
 
 .container {
@@ -98,4 +105,12 @@ table form {
 
 table a {
     text-decoration: none;
+}
+
+footer {
+    width: 100%;
+    padding: 20px;
+    position: fixed;
+    bottom: 0;
+    text-align: center;
 }
